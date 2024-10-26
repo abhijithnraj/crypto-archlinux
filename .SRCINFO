@@ -1,0 +1,14 @@
+pkgbase = aocl-cryptography
+	pkgdesc = AOCL-Cryptography is a library consisting of basic cryptographic functions optimized and tuned for AMD Zen™ based microarchitecture. This library provides a unified solution for Cryptographic routines such as AES (Advanced Encryption Standard) encryption/decryption routines (CFB, CTR, CBC, CCM, GCM, OFB, SIV, XTS), Chacha20 Stream Cipher routines, Chacha20-Poly1305, SHA (Secure Hash Algorithms) routines (SHA2, SHA3, SHAKE), Message Authentication Code (CMAC, HMAC, Poly1305 MAC), RNG, ECDH (Elliptic-curve Diffie–Hellman), RSA (Encrypt/Decrypt and Sign/Verify Functions).
+	pkgver = 5.0
+	pkgrel = 1
+	url = https://github.com/amd/aocl-crypto
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = gcc
+	source = aocl-cryptography.tar.gz::https://github.com/amd/aocl-crypto/archive/refs/tags/5.0.tar.gz
+	sha256sums = b15e609943f9977e13f2d5839195bb7411c843839a09f0ad47f78f57e8821c23
+
+pkgname = aocl-cryptography
