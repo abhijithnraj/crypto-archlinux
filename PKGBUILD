@@ -1,18 +1,35 @@
+#This is an unofficial script to build and install the AOCL-Cryptography library for Arch Linux AUR. 
+
 pkgname=aocl-crypto
 pkgver=5.0
 pkgrel=1
-pkgdesc="AOCL-Cryptography is a library consisting of basic cryptographic functions optimized and tuned for AMD Zen™ based microarchitecture. This library provides a unified solution for Cryptographic routines such as AES (Advanced Encryption Standard) encryption/decryption routines (CFB, CTR, CBC, CCM, GCM, OFB, SIV, XTS), Chacha20 Stream Cipher routines, Chacha20-Poly1305, SHA (Secure Hash Algorithms) routines (SHA2, SHA3, SHAKE), Message Authentication Code (CMAC, HMAC, Poly1305 MAC), RNG, ECDH (Elliptic-curve Diffie–Hellman), RSA (Encrypt/Decrypt and Sign/Verify Functions)."
+pkgdesc="AOCL-Cryptography is a library consisting of cryptographic optimized functions for Zen. 
+        Supports AES(CFB, CTR, CBC, CCM, GCM, OFB, SIV, XTS), Chacha20 Stream Cipher routines, 
+        Chacha20-Poly1305, Digests(SHA2, SHA3, SHAKE), MAC(CMAC, HMAC, Poly1305), RNG, ECDH, RSA"
 arch=('x86_64')
 url="https://github.com/amd/aocl-crypto"
-license=('BSD')
-depends=()
-makedepends=('cmake' 'ninja' 'gcc')
-source=("${pkgname}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('b15e609943f9977e13f2d5839195bb7411c843839a09f0ad47f78f57e8821c23')
+options=("staticlibs")
+depends=("aocl-utils")
+makedepends=('cmake' 'ninja' 'gcc' 'clang')
+
+
+source=("${pkgname}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
+        "out.patch")
+sha256sums=('b15e609943f9977e13f2d5839195bb7411c843839a09f0ad47f78f57e8821c23'
+            '3e7f0c0c7ef22223ec3039dcf5b42f201d028ca6a326d7600f0458329f1b4cad')
+
+prepare() {
+    cd ${srcdir}/${pkgname}-${pkgver}
+    patch -p1 < ../out.patch
+}
 
 build() {
     cd ${srcdir}/${pkgname}-${pkgver}
-    cmake -B build -DCMAKE_INSTALL_PREFIX=/usr -G Ninja
+    #FIXME: Enable Assembly
+    #FIXME: Enable Dynamic Compiler Picker
+    cmake -B build -DALCP_DISABLE_ASSEMBLY=ON -DALCP_ENABLE_EXAMPLES=OFF -DCMAKE_INSTALL_PREFIX=/usr \
+    -DOPENSSL_INSTALL_DIR=/usr  -DAOCL_UTILS_INSTALL_DIR=/usr -DALCP_ENABLE_DYNAMIC_COMPILER_PICK=OFF \
+    -G Ninja
     cmake --build build
 }
 
