@@ -3,9 +3,7 @@
 pkgname=aocl-crypto
 pkgver=5.0
 pkgrel=1
-pkgdesc="AOCL-Cryptography is a library consisting of cryptographic optimized functions for Zen. 
-        Supports AES(CFB, CTR, CBC, CCM, GCM, OFB, SIV, XTS), Chacha20 Stream Cipher routines, 
-        Chacha20-Poly1305, Digests(SHA2, SHA3, SHAKE), MAC(CMAC, HMAC, Poly1305), RNG, ECDH, RSA"
+pkgdesc="AOCL-Cryptography is a library consisting of cryptographic optimized functions for Zen."
 arch=('x86_64')
 url="https://github.com/amd/aocl-crypto"
 options=("staticlibs")
