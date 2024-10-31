@@ -27,7 +27,7 @@ build() {
     cd ${srcdir}/${pkgname}-${pkgver}
     #FIXME: Enable Assembly
     #FIXME: Enable Dynamic Compiler Picker
-    cmake -B build -DALCP_DISABLE_ASSEMBLY=ON -DALCP_ENABLE_EXAMPLES=OFF -DCMAKE_INSTALL_PREFIX=/usr \
+    cmake -B build -DAOCL_COMPAT_LIBS=openssl -DALCP_DISABLE_ASSEMBLY=ON -DALCP_ENABLE_EXAMPLES=OFF -DCMAKE_INSTALL_PREFIX=/usr \
     -DOPENSSL_INSTALL_DIR=/usr  -DAOCL_UTILS_INSTALL_DIR=/usr -DALCP_ENABLE_DYNAMIC_COMPILER_PICK=OFF \
     -G Ninja
     cmake --build build
