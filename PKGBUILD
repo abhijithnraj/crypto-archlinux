@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/amd/aocl-crypto"
 options=("staticlibs")
 depends=("aocl-utils")
-makedepends=('cmake' 'ninja' 'gcc' 'clang')
+makedepends=('cmake' 'ninja' 'gcc' 'clang' 'lsb-release')
 
 
 source=("${pkgname}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
