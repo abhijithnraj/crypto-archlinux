@@ -8,6 +8,7 @@ pkgbase = aocl-crypto
 	makedepends = ninja
 	makedepends = gcc
 	makedepends = clang
+	makedepends = lsb-release
 	depends = aocl-utils
 	options = staticlibs
 	source = aocl-crypto.tar.gz::https://github.com/amd/aocl-crypto/archive/refs/tags/5.0.tar.gz
